@@ -8,7 +8,7 @@ import os
 style.use(style='fivethirtyeight')
 
 
-def the_animator(x_range=600):
+def the_animator(x_range):
 
     
     def animate(r):
@@ -44,5 +44,5 @@ def the_animator(x_range=600):
 
 if __name__ == '__main__':
     
-    the_animator(x_range)
+    the_animator(x_range=600)
     print ('im done')
