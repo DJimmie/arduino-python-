@@ -8,7 +8,7 @@ import os
 style.use(style='fivethirtyeight')
 
 
-def the_animator():
+def the_animator(x_range=600):
 
     
     def animate(r):
@@ -26,7 +26,7 @@ def the_animator():
     ##            print(float(x),float(y))
                 
     ##    ax1.set_ylim(-1,1)
-        ax1.set_xlim(0,600)  
+        ax1.set_xlim(0,x_range)  
         ax1.plot(xs,ys, linewidth=1,color='b')
         ax2.hist(ys,bins=50,color='blue')
 ##        ax2.hist(abs(ys),color='blue')
@@ -39,10 +39,10 @@ def the_animator():
     ##ax1.clear()
     ax1.clear()
     ax2.clear()
-    ani=animation.FuncAnimation(fig,animate,interval=1000)
+    ani=animation.FuncAnimation(fig,animate,interval=1000,blit=True)
     plt.show()
 
 if __name__ == '__main__':
     
-    the_animator()
+    the_animator(x_range)
     print ('im done')
