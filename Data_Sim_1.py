@@ -20,6 +20,7 @@ import datetime
 import math
 import plot_animation
 import subprocess
+import plot_limits
 
 
 # initialize values
@@ -33,6 +34,7 @@ my_delta=30
 delta=datetime.timedelta(seconds=my_delta)
 stoptime=dt+delta
 
+plot_limits.xlimit_setting=my_delta
 # set the current working directory for the data file
 path=os.getcwd()
 file='real_time_data.txt'
@@ -41,9 +43,10 @@ filename=path+'\\real_time_data.txt'
 # genetate data for the specified delta time.
 print('start: ',dt)
 
-# plot_animation.the_animator()
-# os.system("py plot_animation.py")
-# subprocess.Popen("py plot_animation.py",shell=True)
+##plot_animation.py
+##os.system("py plot_animation.py")
+
+subprocess.Popen("py plot_animation.py",shell=True)
 
 
 while datetime.datetime.now()<=stoptime:
@@ -59,7 +62,7 @@ while datetime.datetime.now()<=stoptime:
     file_object.close()
 
     print(xvalues,yvalues[0])
-    plot_animation.the_animator(my_delta)
+##    plot_animation.the_animator(my_delta)
     time.sleep(.5)
     x=x+1
     
