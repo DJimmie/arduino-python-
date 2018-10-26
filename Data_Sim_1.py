@@ -18,9 +18,11 @@ import math
 import plot_animation
 import subprocess
 import plot_limits
+import config
 
-def the_dt(*args):
-        plot_limits.xlimit_setting=my_delta
+def the_dt(my_delta):
+##        plot_limits.the_x_limit(my_delta)
+        config.xlimit_setting=my_delta
 
 if __name__ == '__main__':
     # initialize values
@@ -29,6 +31,8 @@ if __name__ == '__main__':
     t=0
     my_delta=10
     the_dt(my_delta)
+    
+    print(config.xlimit_setting)
 
     
     # set the starttime, delta. The stop time is the now+delta

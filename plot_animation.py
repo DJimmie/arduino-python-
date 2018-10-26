@@ -6,6 +6,7 @@ from matplotlib import style
 import os
 import plot_limits
 import Data_Sim_1
+import config
 
 style.use(style='fivethirtyeight')
 
@@ -16,10 +17,12 @@ style.use(style='fivethirtyeight')
     
 def animate(r):
     global x_range
+    print("I'm Working!!")
 
 ##    x_range=plot_limits.the_x_limit()
 ##    Dim_Sim_1.the_dt()
 ##    x_range=plot_limits.xlimit_setting
+    
     graph_data=open(os.getcwd()+'\\real_time_data.txt','r').read()
     lines=graph_data.split('\n')
 ##    print (lines)
@@ -48,7 +51,9 @@ if __name__ == '__main__':
 ##    the_animator(x_range=600)
 
     
-    x_range=plot_limits.the_x_limit()
+    x_range=config.xlimit_setting
+    print(x_range)
+    
 ##    Dim_Sim_1.the_dt()
     
     fig=plt.figure()
