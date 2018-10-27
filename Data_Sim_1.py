@@ -21,15 +21,24 @@ import plot_limits
 import config
 
 def the_dt(my_delta):
+        
 ##        plot_limits.the_x_limit(my_delta)
-        config.xlimit_setting=my_delta
+##        config.xlimit_setting=my_delta
+
+        path=os.getcwd()
+        file='plot_settings.txt'
+        filename=path+'\\plot_settings.txt'
+        file_object=open(filename, 'w')
+        file_object.write(str(my_delta))
+        file_object.close()
+        
 
 if __name__ == '__main__':
     # initialize values
     x=0
     xvalues,yvalues=0,0
     t=0
-    my_delta=10
+    my_delta=30
     the_dt(my_delta)
     
     print(config.xlimit_setting)

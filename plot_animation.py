@@ -44,14 +44,25 @@ def animate(r):
 
 
 
+def get_plot_settings():
 
+    path=os.getcwd()
+    file='plot_settings.txt'
+    filename=path+'\\plot_settings.txt'
 
+    with open (filename) as f_obj:
+        for line in f_obj:
+            print(line.rstrip())
+            p_set_1=int(line.rstrip())
+            return p_set_1
+    
+ 
 if __name__ == '__main__':
     
 ##    the_animator(x_range=600)
 
     
-    x_range=config.xlimit_setting
+    x_range=get_plot_settings()
     print(x_range)
     
 ##    Dim_Sim_1.the_dt()
