@@ -4,25 +4,16 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import style
 import os
-import plot_limits
-import Data_Sim_1
-import config
+
+
 
 style.use(style='fivethirtyeight')
 
-
-##def the_animator(x_range):
-
-
-    
 def animate(r):
     global x_range
-    print("I'm Working!!")
+##    print("I'm Working!!")
 
-##    x_range=plot_limits.the_x_limit()
-##    Dim_Sim_1.the_dt()
-##    x_range=plot_limits.xlimit_setting
-    
+
     graph_data=open(os.getcwd()+'\\real_time_data.txt','r').read()
     lines=graph_data.split('\n')
 ##    print (lines)
@@ -45,6 +36,7 @@ def animate(r):
 
 
 def get_plot_settings():
+    """ Reads the plot settings from the plot_settings.txt."""
 
     path=os.getcwd()
     file='plot_settings.txt'
@@ -59,13 +51,10 @@ def get_plot_settings():
  
 if __name__ == '__main__':
     
-##    the_animator(x_range=600)
-
-    
+ 
     x_range=get_plot_settings()
     print(x_range)
     
-##    Dim_Sim_1.the_dt()
     
     fig=plt.figure()
     ax1=fig.add_subplot(2,1,1)

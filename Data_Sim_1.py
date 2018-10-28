@@ -17,13 +17,14 @@ import datetime
 import math
 import plot_animation
 import subprocess
-import plot_limits
-import config
+
+
 
 def the_dt(my_delta,sampling_rate):
+        """Takes the user selected run duration and sampling rate then calculates
+the number of samples which is saved in the plot settings file. This will be the xlimit range
+for the plot."""
         
-##        plot_limits.the_x_limit(my_delta)
-##        config.xlimit_setting=my_delta
         num_of_samples=(my_delta/sampling_rate)
         path=os.getcwd()
         file='plot_settings.txt'
@@ -42,8 +43,6 @@ if __name__ == '__main__':
     sampling_rate=1
     the_dt(my_delta,sampling_rate)
     
-    print(config.xlimit_setting)
-
     
     # set the starttime, delta. The stop time is the now+delta
     dt=datetime.datetime.now()
@@ -61,8 +60,6 @@ if __name__ == '__main__':
     # genetate data for the specified delta time.
     print('start: ',dt)
 
-    ##plot_animation.py
-    ##os.system("py plot_animation.py")
 
     subprocess.Popen("py plot_animation.py",shell=True)
 
