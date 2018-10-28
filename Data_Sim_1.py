@@ -20,16 +20,16 @@ import subprocess
 import plot_limits
 import config
 
-def the_dt(my_delta):
+def the_dt(my_delta,sampling_rate):
         
 ##        plot_limits.the_x_limit(my_delta)
 ##        config.xlimit_setting=my_delta
-
+        num_of_samples=(my_delta/sampling_rate)
         path=os.getcwd()
         file='plot_settings.txt'
         filename=path+'\\plot_settings.txt'
         file_object=open(filename, 'w')
-        file_object.write(str(my_delta))
+        file_object.write(str(num_of_samples))
         file_object.close()
         
 
@@ -39,7 +39,8 @@ if __name__ == '__main__':
     xvalues,yvalues=0,0
     t=0
     my_delta=30
-    the_dt(my_delta)
+    sampling_rate=1
+    the_dt(my_delta,sampling_rate)
     
     print(config.xlimit_setting)
 
@@ -73,14 +74,17 @@ if __name__ == '__main__':
     #     yvalues=(5*noise)
         t+=0.01
         yvalues=np.asarray(np.sin(2*t*np.pi))*np.ones(1)
+
+        dtn=datetime.datetime.now()
         
         file_object=open(filename, 'a')
-        file_object.write(str(xvalues)+','+str(yvalues[0])+'\n')
+##        file_object.write(str(xvalues)+','+str(yvalues[0])+'\n')
+        file_object.write(str(xvalues)+','+str(yvalues[0])+','+str(dtn)+'\n')
         file_object.close()
 
-        print(xvalues,yvalues[0])
+        print(xvalues,yvalues[0],dtn)
     ##    plot_animation.the_animator(my_delta)
-        time.sleep(.5)
+        time.sleep(sampling_rate)
         x=x+1
         
 

@@ -30,7 +30,7 @@ def animate(r):
     ys=[]
     for line in lines:
         if len(line)>1:
-            x,y=line.split(',')
+            x,y,z=line.split(',')
             xs.append(float(x))
             ys.append(float(y))
 
@@ -53,7 +53,7 @@ def get_plot_settings():
     with open (filename) as f_obj:
         for line in f_obj:
             print(line.rstrip())
-            p_set_1=int(line.rstrip())
+            p_set_1=float(line.rstrip())
             return p_set_1
     
  
