@@ -27,12 +27,21 @@ the number of samples which is saved in the plot settings file. This will be the
 for the plot."""
         
         num_of_samples=(my_delta/sampling_rate)
+        y_min=60
+        y_max=90
         path=os.getcwd()
         file='plot_settings.txt'
         filename=path+'\\plot_settings.txt'
-        file_object=open(filename, 'w')
-        file_object.write(str(num_of_samples))
-        file_object.close()
+
+        with open (filename, 'w') as file_object:
+                file_object.write(str(num_of_samples)+'\n')
+                print(str(num_of_samples)+'\n')
+                file_object.write(str(y_min)+'\n')
+                file_object.write(str(y_max)+'\n')
+                
+##        file_object=open(filename, 'w')
+                
+##        file_object.close()
         
 
 if __name__ == '__main__':
@@ -40,8 +49,8 @@ if __name__ == '__main__':
     x=0
     xvalues,yvalues=0,0
     t=0
-    my_delta=30
-    sampling_rate=1
+    my_delta=2700
+    sampling_rate=.5
     the_dt(my_delta,sampling_rate)
     
     
@@ -64,14 +73,16 @@ if __name__ == '__main__':
 
     subprocess.Popen("py plot_animation.py",shell=True)
 
-    ser=serial.Serial('com3',baudrate=9600,timeout=1)
+    ser=serial.Serial('com1',baudrate=9600,timeout=1)
+
+    time.sleep(1)
 
 
     while datetime.datetime.now()<=stoptime:
 
         xvalues=x
     
-        arduinoData=ser.readline().decode('ascii')
+        arduinoData=ser.readline().decode('ascii').strip()
         yvalues=arduinoData
 ##        yvalues=np.asarray(np.sin(2*t*np.pi))*np.ones(1)
 
