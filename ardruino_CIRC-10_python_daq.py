@@ -49,8 +49,8 @@ if __name__ == '__main__':
     x=0
     xvalues,yvalues=0,0
     t=0
-    my_delta=2700
-    sampling_rate=.5
+    my_delta=3600*11
+    sampling_rate=5
     the_dt(my_delta,sampling_rate)
     
     
@@ -73,7 +73,7 @@ if __name__ == '__main__':
 
     subprocess.Popen("py plot_animation.py",shell=True)
 
-    ser=serial.Serial('com1',baudrate=9600,timeout=1)
+    ser=serial.Serial('com3',baudrate=9600,timeout=1)
 
     time.sleep(1)
 
